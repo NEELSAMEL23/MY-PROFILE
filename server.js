@@ -8,10 +8,10 @@ const app = express();
 app.use(express.json());
 app.use(morgan("dev"));
 app.use("/api", require("./routes/contactRoutes"));
-app.use(express.static(path.join(__filename, "./client/build")));
+app.use(express.static(path.join(__dirname, "../front-end/build")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname,"./client/build/index.html"));
+  res.sendFile(path.join(__dirname,"../front-end/build/index.html"));
 });
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
